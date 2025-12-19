@@ -35,10 +35,7 @@ int	filter(char *str)
 		if (str[i] == '+' || str[i] == '-')
 		{
 			if (!is_degit(str[i + 1]))
-			{
-				printf("%c\n", str[i + 1]);
 				return (0);
-			}
 		}
 		i++;
 	}

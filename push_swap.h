@@ -1,6 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -20,5 +21,10 @@ void				free_error(char **pptr, int index_from);
 char				**ft_split(char *s, char sep);
 int					check_if_degit_string(char *str);
 int					check_if_degits_arr_string(int c, char **v);
-
+void				display_error(void);
+long				ft_atoi(char *str, int *flag);
+int					is_degit(char s);
+int					is_spaces(char s);
+int					contains_just_spaces(char *str);
+int					ft_ptrlenght(char **pptr);
 #endif
