@@ -55,3 +55,42 @@ int	ft_ptrlenght(char **pptr)
 		i++;
 	return (i);
 }
+
+int	*allocate_arr(t_list *list, int size)
+{
+	int	*r_ptr;
+	int	i;
+
+	r_ptr = malloc(size * sizeof(int));
+	i = 0;
+	if (!r_ptr)
+		return (NULL);
+	while (list)
+	{
+		r_ptr[i] = list->val;
+		i++;
+		list = list->next;
+	}
+	return (r_ptr);
+}
+
+void	sort_array(int *arr, int sizeArr)
+{
+	int i = 0;
+	while (i < sizeArr - 1)
+	{
+		int j = i + 1;
+		while (j < sizeArr)
+		{
+			if (arr[i] > arr[j])
+			{
+				int tmp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = tmp;
+			}
+			j++;
+		}
+
+		i++;
+	}
+}
