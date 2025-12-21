@@ -9,7 +9,6 @@ t_list	*create_node(int data)
 		return (NULL);
 	node->val = data;
 	node->index_sorted = -1;
-	node->index_value = -1;
 	node->next = NULL;
 	return (node);
 }
@@ -46,17 +45,20 @@ void	ft_print_list(t_list *head)
 {
 	while (head)
 	{
-		printf("%d %d %d\n", head->index_value, head->index_sorted, head->val);
+		printf("%d %d \n", head->index_sorted, head->val);
 		head = head->next;
 	}
 }
 
 void	free_all_list(t_list *head)
 {
+	t_list	*tmp;
+
 	while (head)
 	{
-		free(head);
+		tmp = head;
 		head = head->next;
+		free(tmp);
 	}
 }
 
@@ -64,27 +66,20 @@ int	check_if_duplicate(t_list *head)
 {
 	t_list	*head2;
 
-	while (head->next)
+	if (head)
 	{
-		head2 = head->next;
-		while (head2)
+		while (head->next)
 		{
-			if (head->val == head2->val)
-				return (0);
-			head2 = head2->next;
+			head2 = head->next;
+			while (head2)
+			{
+				if (head->val == head2->val)
+					return (0);
+				head2 = head2->next;
+			}
+			head = head->next;
 		}
-		head = head->next;
+		return (1);
 	}
-	return (1);
-}
-
-void	set_indexs(t_list *head)
-{
-	int i = 0;
-	while (head)
-	{
-		head->index_value = i;
-		i++;
-		head = head->next;
-	}
+	return (0);
 }

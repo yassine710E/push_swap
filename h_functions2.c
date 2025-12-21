@@ -10,6 +10,7 @@ int	is_spaces(char s)
 	return (s == 32 || (s >= 9 && s <= 13));
 }
 
+
 int	check_if_degit_string(char *str)
 {
 	int	i;

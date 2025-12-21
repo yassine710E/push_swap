@@ -46,16 +46,6 @@ int	contains_just_spaces(char *str)
 	return (1);
 }
 
-int	ft_ptrlenght(char **pptr)
-{
-	int	i;
-
-	i = 0;
-	while (pptr[i])
-		i++;
-	return (i);
-}
-
 int	*allocate_arr(t_list *list, int size)
 {
 	int	*r_ptr;
@@ -74,7 +64,7 @@ int	*allocate_arr(t_list *list, int size)
 	return (r_ptr);
 }
 
-void	sort_array(int *arr, int sizeArr)
+void	sort_array(int *arr, int sizeArr, int *flag)
 {
 	int i = 0;
 	while (i < sizeArr - 1)
@@ -87,6 +77,7 @@ void	sort_array(int *arr, int sizeArr)
 				int tmp = arr[j];
 				arr[j] = arr[i];
 				arr[i] = tmp;
+				*flag = 1;
 			}
 			j++;
 		}

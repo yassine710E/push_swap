@@ -12,7 +12,8 @@ int	main(int c, char **v)
 		{
 			int j = 0;
 			char **pptr = ft_split(v[i], ' ');
-			while (j < ft_ptrlenght(pptr))
+
+			while (pptr[j])
 			{
 				int num = (int)ft_atoi(pptr[j], &flag);
 				free(pptr[j]);
@@ -41,7 +42,9 @@ int	main(int c, char **v)
 		}
 		//indexing the list from the smallest to bigger
 		int *arr = allocate_arr(list, ft_size_list(list));
-		sort_array(arr, ft_size_list(list));
+		sort_array(arr, ft_size_list(list), &flag);
+		if (!flag)
+			return (0);
 		t_list *tmp;
 		int j = 0;
 		while (j < ft_size_list(list))
@@ -52,10 +55,9 @@ int	main(int c, char **v)
 			j++;
 		}
 		free(arr);
-
-		set_indexs(list);
 		int chunk = get_chunk(ft_size_list(list));
 		int pushed = 0;
+		//pushed = 4
 
 		while (ft_size_list(list) > 0)
 		{
@@ -80,8 +82,6 @@ int	main(int c, char **v)
 				write(1, "ra\n", 3);
 			}
 		}
-
-		set_indexs(list2);
 		t_list *max_node;
 		while (ft_size_list(list2) > 0)
 		{
@@ -114,9 +114,9 @@ int	main(int c, char **v)
 			push_front(&list2, &list);
 			write(1, "pa\n", 3);
 		}
-
-		set_indexs(list);
 		ft_print_list(list);
+		free_all_list(list2);
+		free_all_list(list);
 	}
 	else if (!check_if_degits_arr_string(c, v))
 		display_error();

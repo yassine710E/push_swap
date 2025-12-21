@@ -9,7 +9,6 @@
 typedef struct s_list
 {
 	int				val;
-	int				index_value;
 	int				index_sorted;
 	struct s_list	*next;
 }					t_list;
@@ -26,7 +25,6 @@ long				ft_atoi(char *str, int *flag);
 int					is_degit(char s);
 int					is_spaces(char s);
 int					contains_just_spaces(char *str);
-int					ft_ptrlenght(char **pptr);
 t_list				*create_node(int data);
 void				append_node(t_list **list, t_list *node);
 int					ft_size_list(t_list *list);
@@ -38,9 +36,8 @@ void				push_front(t_list **list_1, t_list **list_2);
 void				rotate(t_list **list);
 void				reverse_rotate(t_list **list);
 int					*allocate_arr(t_list *list, int size);
-void				sort_array(int *arr, int sizeArr);
+void				sort_array(int *arr, int sizeArr,int *flag);
 t_list				*find_node(t_list *list, int data);
-void				set_indexs(t_list *head);
 int					get_chunk(int size_list);
 t_list				*get_max_node(t_list *head);
 #endif
