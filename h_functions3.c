@@ -66,22 +66,25 @@ int	*allocate_arr(t_list *list, int size)
 
 void	sort_array(int *arr, int sizeArr, int *flag)
 {
-	int i = 0;
+	int		i;
+	int		j;
+	int		tmp;
+
+	i = 0;
 	while (i < sizeArr - 1)
 	{
-		int j = i + 1;
+		j = i + 1;
 		while (j < sizeArr)
 		{
 			if (arr[i] > arr[j])
 			{
-				int tmp = arr[j];
+				tmp = arr[j];
 				arr[j] = arr[i];
 				arr[i] = tmp;
 				*flag = 1;
 			}
 			j++;
 		}
-
 		i++;
 	}
 }

@@ -30,10 +30,13 @@ int	get_chunk(int size_list)
 
 t_list	*get_max_node(t_list *head)
 {
+	t_list	*r_node;
+	int		max_index_sort;
+
 	if (head)
 	{
-		int max_index_sort = head->index_sorted;
-		t_list *r_node = head;
+		max_index_sort = head->index_sorted;
+		r_node = head;
 		head = head->next;
 		while (head)
 		{

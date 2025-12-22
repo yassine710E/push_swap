@@ -43,7 +43,7 @@ char	*allocate_str(char *s, int start, int end)
 	return (str);
 }
 
-void	free_error(char **pptr, int index_from)
+char	**free_error(char **pptr, int index_from)
 {
 	while (index_from >= 0)
 	{
@@ -51,6 +51,7 @@ void	free_error(char **pptr, int index_from)
 		index_from--;
 	}
 	free(pptr);
+	return (NULL);
 }
 
 char	**ft_split(char *s, char sep)
@@ -61,11 +62,10 @@ char	**ft_split(char *s, char sep)
 	char	*word;
 	int		i_r_value;
 
-	//count words
 	r_value = malloc(sizeof(char *) * (count_words(s, sep) + 1));
-	i_r_value = 0;
 	if (!r_value)
 		return (NULL);
+	i_r_value = 0;
 	start = 0;
 	while (s[start] == sep)
 		start++;
@@ -73,17 +73,12 @@ char	**ft_split(char *s, char sep)
 	while (start <= ft_strlen(s))
 	{
 		if (re_index == -1 && s[start] != sep)
-		{
 			re_index = start;
-		}
 		else if (re_index != -1 && (s[start] == sep || start == ft_strlen(s)))
 		{
 			word = allocate_str(s, re_index, start - 1);
 			if (!word)
-			{
-				free_error(r_value, i_r_value - 1);
-				return (NULL);
-			}
+				return (free_error(r_value, i_r_value - 1));
 			r_value[i_r_value++] = word;
 			re_index = -1;
 		}

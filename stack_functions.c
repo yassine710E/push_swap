@@ -40,15 +40,6 @@ int	ft_size_list(t_list *list)
 	}
 	return (counter);
 }
-//this function is just for test
-void	ft_print_list(t_list *head)
-{
-	while (head)
-	{
-		printf("%d %d \n", head->index_sorted, head->val);
-		head = head->next;
-	}
-}
 
 void	free_all_list(t_list *head)
 {

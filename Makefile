@@ -1,5 +1,5 @@
 NAME = libpush_swap.a
-SRC = errors.c h_functions.c h_functions2.c h_functions3.c operations.c stack_functions.c
+SRC = h_functions4.c h_functions.c h_functions2.c h_functions3.c operations.c stack_functions.c
 OBJ = $(SRC:%.c=%.o)
 CFLAGS = -Wall -Wextra -Werror
 MAIN = main.c

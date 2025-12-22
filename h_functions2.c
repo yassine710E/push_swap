@@ -10,7 +10,6 @@ int	is_spaces(char s)
 	return (s == 32 || (s >= 9 && s <= 13));
 }
 
-
 int	check_if_degit_string(char *str)
 {
 	int	i;
@@ -45,7 +44,9 @@ int	filter(char *str)
 
 int	check_if_degits_arr_string(int c, char **v)
 {
-	int i = 1;
+	int	i;
+
+	i = 1;
 	while (i < c)
 	{
 		if (!check_if_degit_string(v[i]) || !filter(v[i]))
