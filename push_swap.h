@@ -13,11 +13,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_strlen(char *s);
-int					count_words(char *s, char sep);
-char				*allocate_str(char *s, int start, int end);
-char				**free_error(char **pptr, int index_from);
-char				**ft_split(char *s, char sep);
+size_t				ft_strlen(const char *s);
+char				**ft_split(char const *s, char sep);
 int					check_if_degit_string(char *str);
 int					check_if_degits_arr_string(int c, char **v);
 void				display_error(void);
@@ -40,4 +37,9 @@ void				sort_array(int *arr, int sizeArr, int *flag);
 t_list				*find_node(t_list *list, int data);
 int					get_chunk(int size_list);
 t_list				*get_max_node(t_list *head);
+void				sort_2(t_list **head);
+void				sort_3(t_list **head);
+void				sort_5_and_4(t_list **list1, t_list **list2);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+
 #endif

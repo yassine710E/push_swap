@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -10,80 +10,72 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	count_words(char *s, char sep)
+static int	ft_count_words(const char *s, int start, int end, char c)
 {
-	int	i;
 	int	counter;
 
-	i = 0;
 	counter = 0;
-	while (s[i] == sep)
-		i++;
-	while (i < ft_strlen(s))
+	while (s[start] && start <= end)
 	{
-		if (s[i] != sep && (s[i + 1] == sep || s[i + 1] == 0))
+		if ((s[start] >= 32 && s[start] <= 126) && (s[start + 1] == c || s[start + 1] == '\0'))
 			counter++;
-		i++;
+		start++;
 	}
 	return (counter);
 }
 
-char	*allocate_str(char *s, int start, int end)
+static int	ft_check_and_free(char **ptr, int index_from)
 {
-	char	*str;
-	int		i_str;
-
-	str = malloc(end - start + 1);
-	i_str = 0;
-	if (!str)
-		return (NULL);
-	while (start <= end)
-		str[i_str++] = s[start++];
-	str[i_str] = 0;
-	return (str);
-}
-
-char	**free_error(char **pptr, int index_from)
-{
-	while (index_from >= 0)
+	if (!ptr[index_from])
 	{
-		free(pptr[index_from]);
 		index_from--;
+		while (index_from >= 0)
+		{
+			free(ptr[index_from]);
+			index_from--;
+		}
+		free(ptr);
+		return (0);
 	}
-	free(pptr);
-	return (NULL);
+	return (1);
 }
 
-char	**ft_split(char *s, char sep)
+static char	**ft_split_2(char **ptr_word, const char *s, char c)
 {
-	char	**r_value;
+	int		index;
+	int		i_ptr_words;
 	int		start;
-	int		re_index;
-	char	*word;
-	int		i_r_value;
+	char	**tmp;
 
-	r_value = malloc(sizeof(char *) * (count_words(s, sep) + 1));
-	if (!r_value)
-		return (NULL);
-	i_r_value = 0;
-	start = 0;
-	while (s[start] == sep)
-		start++;
-	re_index = -1;
-	while (start <= ft_strlen(s))
+	index = -1;
+	i_ptr_words = -1;
+	start = -1;
+	tmp = ptr_word;
+	while (++start <= (int)ft_strlen(s))
 	{
-		if (re_index == -1 && s[start] != sep)
-			re_index = start;
-		else if (re_index != -1 && (s[start] == sep || start == ft_strlen(s)))
+		if (index == -1 && s[start] != c)
+			index = start;
+		else if (index >= 0 && (s[start] == c || start == (int)ft_strlen(s)))
 		{
-			word = allocate_str(s, re_index, start - 1);
-			if (!word)
-				return (free_error(r_value, i_r_value - 1));
-			r_value[i_r_value++] = word;
-			re_index = -1;
+			tmp[++i_ptr_words] = ft_substr(s, index, start - index);
+			if (!ft_check_and_free(tmp, i_ptr_words))
+				return (NULL);
+			index = -1;
 		}
-		start++;
 	}
-	r_value[i_r_value] = 0;
-	return (r_value);
+	tmp[++i_ptr_words] = 0;
+	return (tmp);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ptr_words;
+
+	if (!s)
+		return (NULL);
+	ptr_words = malloc(sizeof(char *) * (ft_count_words(s, 0, ft_strlen(s) - 1,
+					c) + 1));
+	if (!ptr_words)
+		return (NULL);
+	return (ft_split_2(ptr_words, s, c));
 }
