@@ -1,12 +1,10 @@
 #include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	print_list(t_list *head)
+void apply_rules(void)
 {
-	while (head)
-	{
-		printf("%d\n", head->val);
-		head = head->next;
-	}
+
+    
 }
 
 int	main(int c, char **v)
@@ -16,7 +14,7 @@ int	main(int c, char **v)
 	int		*arr;
 
 	list = NULL;
-	list2 = NULL;
+	 list2 = NULL;
 	if (c >= 2 && check_if_degits_arr_string(c, v))
 	{
 		if (!parsing_function(&list, c, v, &arr))
@@ -24,6 +22,7 @@ int	main(int c, char **v)
 		if (!indexing(list, arr))
 			return (0);
 		sorting(&list, &list2);
+        apply_rules();
 	}
 	else if (!check_if_degits_arr_string(c, v))
 		display_error();

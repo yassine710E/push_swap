@@ -32,6 +32,8 @@ int	filter(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if ((str[i] == '+' || str[i] == '-') && i != 0)
+			return (0);
 		if (str[i] == '+' || str[i] == '-')
 		{
 			if (!is_degit(str[i + 1]))

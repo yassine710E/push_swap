@@ -23,7 +23,7 @@ int					is_degit(char s);
 int					is_spaces(char s);
 int					contains_just_spaces(char *str);
 t_list				*create_node(int data);
-void				append_node(t_list **list, t_list *node);
+void				append_node(t_list **list, int num);
 int					ft_size_list(t_list *list);
 void				free_all_list(t_list *head);
 int					check_if_duplicate(t_list *head);
@@ -41,5 +41,11 @@ void				sort_2(t_list **head);
 void				sort_3(t_list **head);
 void				sort_5_and_4(t_list **list1, t_list **list2);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
-
+int					set_list(int c, char **v, int *flag, t_list **list);
+void				push_to_stack_b(t_list **list, t_list **list2);
+void				push_back_to_stack_a(t_list **list, t_list **list2);
+int					parsing_function(t_list **list, int c, char **v, int **arr);
+int					free_list_display_error(int *arr, t_list *list);
+int					indexing(t_list *list, int *arr);
+void				sorting(t_list **list, t_list **list2);
 #endif

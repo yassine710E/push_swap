@@ -15,7 +15,7 @@ long	ft_atoi(char *str, int *flag)
 			sign = -1;
 		i++;
 	}
-	while (str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
@@ -66,9 +66,9 @@ int	*allocate_arr(t_list *list, int size)
 
 void	sort_array(int *arr, int sizeArr, int *flag)
 {
-	int		i;
-	int		j;
-	int		tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	while (i < sizeArr - 1)

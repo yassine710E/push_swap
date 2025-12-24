@@ -13,19 +13,23 @@ t_list	*create_node(int data)
 	return (node);
 }
 
-void	append_node(t_list **list, t_list *node)
+void	append_node(t_list **list, int num)
 {
 	t_list	*head;
+	t_list	*new_node;
 
+	new_node = create_node(num);
+	if (!new_node)
+		return ;
 	if (*list)
 	{
 		head = *list;
 		while (head->next)
 			head = head->next;
-		head->next = node;
+		head->next = new_node;
 	}
 	else
-		*list = node;
+		*list = new_node;
 }
 
 int	ft_size_list(t_list *list)

@@ -17,7 +17,8 @@ static int	ft_count_words(const char *s, int start, int end, char c)
 	counter = 0;
 	while (s[start] && start <= end)
 	{
-		if ((s[start] >= 32 && s[start] <= 126) && (s[start + 1] == c || s[start + 1] == '\0'))
+		if ((s[start] >= 32 && s[start] <= 126) && (s[start + 1] == c || s[start
+					+ 1] == '\0'))
 			counter++;
 		start++;
 	}
