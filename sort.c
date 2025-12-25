@@ -4,7 +4,7 @@ void	sort_2(t_list **head)
 {
 	if (*head && (*head)->next && (*head)->val > (*head)->next->val)
 	{
-		swap_first_two(&(*head), "sa\n");
+		swap_first_two(&(*head), "sa\n", 0);
 	}
 }
 
@@ -14,9 +14,9 @@ void	sort_3(t_list **head)
 
 	max = get_max_node(*head);
 	if ((*head) && max && (*head)->val == max->val)
-		rotate(&(*head), "ra\n");
+		rotate(&(*head), "ra\n", 0);
 	else if ((*head) && (*head)->next && max && (*head)->next->val == max->val)
-		reverse_rotate(&(*head), "rra\n");
+		reverse_rotate(&(*head), "rra\n", 0);
 	sort_2(&(*head));
 }
 
@@ -52,11 +52,11 @@ void	get_min_to_top_and_push_it(t_list **list1, t_list **list2)
 	while ((*list1)->val != min->val)
 	{
 		if (pos <= ft_size_list((*list1)) / 2)
-			rotate(&(*list1), "ra\n");
+			rotate(&(*list1), "ra\n", 0);
 		else
-			reverse_rotate(&(*list1), "rra\n");
+			reverse_rotate(&(*list1), "rra\n", 0);
 	}
-	push_front(&(*list1), &(*list2), "pb\n");
+	push_front(&(*list1), &(*list2), "pb\n", 0);
 }
 
 void	sort_5_and_4(t_list **list1, t_list **list2)
@@ -67,5 +67,5 @@ void	sort_5_and_4(t_list **list1, t_list **list2)
 		get_min_to_top_and_push_it(&(*list1), &(*list2));
 	sort_3(&(*list1));
 	while (ft_size_list(*list2) > 0)
-		push_front(&(*list2), &(*list1), "pa\n");
+		push_front(&(*list2), &(*list1), "pa\n", 0);
 }

@@ -27,17 +27,19 @@ void				append_node(t_list **list, int num);
 int					ft_size_list(t_list *list);
 void				free_all_list(t_list *head);
 int					check_if_duplicate(t_list *head);
-void				swap_first_two(t_list **top, char *s_stack_op);
+void				swap_first_two(t_list **top, char *s_stack_op,
+						int checker_flag);
 void				push_front(t_list **list_1, t_list **list_2,
-						char *p_stack_name);
-void				rotate(t_list **list, char *r_stack_name);
-void				reverse_rotate(t_list **list, char *rr_stack_name);
+						char *p_stack_name, int checker_flag);
+void				rotate(t_list **list, char *r_stack_name, int checker_flag);
+void				reverse_rotate(t_list **list, char *rr_stack_name,
+						int checker_flag);
 int					*allocate_arr(t_list *list, int size);
 void				sort_array(int *arr, int sizeArr, int *flag);
 t_list				*find_node(t_list *list, int data);
 int					get_chunk(int size_list);
 t_list				*get_max_node(t_list *head);
-void				sort_2(t_list **head);
+void				sort_2(t_list **headz);
 void				sort_3(t_list **head);
 void				sort_5_and_4(t_list **list1, t_list **list2);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -48,4 +50,5 @@ int					parsing_function(t_list **list, int c, char **v, int **arr);
 int					free_list_display_error(int *arr, t_list *list);
 int					indexing(t_list *list, int *arr);
 void				sorting(t_list **list, t_list **list2);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

@@ -10,6 +10,15 @@ int	free_list_display_error(int *arr, t_list *list)
 	return (0);
 }
 
+void	print_list(t_list *head)
+{
+	while (head)
+	{
+		printf("%d\n", head->val);
+		head = head->next;
+	}
+}
+
 int	parsing_function(t_list **list, int c, char **v, int **arr)
 {
 	int	flag;

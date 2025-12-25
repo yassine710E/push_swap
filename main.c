@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-void	print_list(t_list *head)
-{
-	while (head)
-	{
-		printf("%d\n", head->val);
-		head = head->next;
-	}
-}
-
 int	main(int c, char **v)
 {
 	t_list	*list;

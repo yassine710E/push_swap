@@ -8,6 +8,25 @@ int	free_all_and_return_0(t_list *head, char **pptr)
 	return (0);
 }
 
+int	is_number_format_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			free(str);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	set_list(int c, char **v, int *flag, t_list **list)
 {
 	int		i;
@@ -15,24 +34,24 @@ int	set_list(int c, char **v, int *flag, t_list **list)
 	char	**pptr;
 	int		num;
 
-	i = 1;
-	while (i < c)
+	i = 0;
+	while (++i < c)
 	{
-		j = 0;
+		j = -1;
 		pptr = ft_split(v[i], ' ');
 		if (!pptr)
 			return (0);
-		while (pptr[j])
+		while (pptr[++j])
 		{
+			if (!is_number_format_valid(pptr[j]))
+				return (free_all_and_return_0(*list, pptr));
 			num = (int)ft_atoi(pptr[j], flag);
 			free(pptr[j]);
 			append_node(&(*list), num);
 			if (*flag)
 				return (free_all_and_return_0(*list, pptr));
-			j++;
 		}
 		free(pptr);
-		i++;
 	}
 	return (1);
 }
@@ -48,17 +67,17 @@ void	push_to_stack_b(t_list **list, t_list **list2)
 	{
 		if ((*list)->index_sorted <= pushed)
 		{
-			push_front(&(*list), &(*list2), "pb\n");
-			rotate(&(*list2), "rb\n");
+			push_front(&(*list), &(*list2), "pb\n", 0);
+			rotate(&(*list2), "rb\n", 0);
 			pushed++;
 		}
 		else if ((*list)->index_sorted <= pushed + chunk)
 		{
-			push_front(&(*list), &(*list2), "pb\n");
+			push_front(&(*list), &(*list2), "pb\n", 0);
 			pushed++;
 		}
 		else
-			rotate(&(*list), "ra\n");
+			rotate(&(*list), "ra\n", 0);
 	}
 }
 
@@ -81,11 +100,11 @@ void	push_back_to_stack_a(t_list **list, t_list **list2)
 		while ((*list2)->val != max_node->val)
 		{
 			if (pos <= ft_size_list(*list2) / 2)
-				rotate(&(*list2), "rb\n");
+				rotate(&(*list2), "rb\n", 0);
 			else
-				reverse_rotate(&(*list2), "rrb\n");
+				reverse_rotate(&(*list2), "rrb\n", 0);
 		}
-		push_front(&(*list2), &(*list), "pa\n");
+		push_front(&(*list2), &(*list), "pa\n", 0);
 	}
 	free_all_list(*list2);
 }
