@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   h_functions3.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ychabane <ychabane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/25 14:29:19 by ychabane          #+#    #+#             */
+/*   Updated: 2025/12/25 14:31:21 by ychabane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long	ft_atoi(char *str, int *flag)
@@ -18,10 +30,10 @@ long	ft_atoi(char *str, int *flag)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
+		if (result * sign < (long)INT_MIN || result * sign > (long)INT_MAX)
+			*flag = 1;
 		i++;
 	}
-	if (result * sign < (long)INT_MIN || result * sign > (long)INT_MAX)
-		*flag = 1;
 	return (result * sign);
 }
 
@@ -87,4 +99,18 @@ void	sort_array(int *arr, int sizeArr, int *flag)
 		}
 		i++;
 	}
+}
+
+int	all_string_just_spaces(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!is_spaces(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_helper2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ychabane <ychabane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/25 14:29:48 by ychabane          #+#    #+#             */
+/*   Updated: 2025/12/25 16:14:09 by ychabane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	free_list_display_error(int *arr, t_list *list)
@@ -8,15 +20,6 @@ int	free_list_display_error(int *arr, t_list *list)
 		free_all_list(list);
 	display_error();
 	return (0);
-}
-
-void	print_list(t_list *head)
-{
-	while (head)
-	{
-		printf("%d\n", head->val);
-		head = head->next;
-	}
 }
 
 int	parsing_function(t_list **list, int c, char **v, int **arr)
@@ -33,7 +36,13 @@ int	parsing_function(t_list **list, int c, char **v, int **arr)
 		return (free_list_display_error(NULL, *list));
 	sort_array(*arr, ft_size_list(*list), &flag);
 	if (!flag)
-		return (free_list_display_error(*arr, *list));
+	{
+		if (*arr)
+			free(*arr);
+		if (*list)
+			free_all_list(*list);
+		return (0);
+	}
 	return (1);
 }
 

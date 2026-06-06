@@ -16,8 +16,8 @@ SRC =  h_functions.c \
        main_helper.c \
        main_helper2.c
 
-SRC_BONUS = get_next_line_bonus.c \
-            get_next_line_utils_bonus.c
+SRC_BONUS = get_next_line.c \
+            get_next_line_utils.c
 
 MAIN_SRC        = main.c
 MAIN_CHECKER_SRC = main_checker.c

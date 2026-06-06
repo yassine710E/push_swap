@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   h_functions2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ychabane <ychabane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/25 14:29:14 by ychabane          #+#    #+#             */
+/*   Updated: 2025/12/25 14:31:25 by ychabane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_degit(char s)
@@ -49,7 +61,8 @@ int	check_if_degits_arr_string(int c, char **v)
 	i = 1;
 	while (i < c)
 	{
-		if (!check_if_degit_string(v[i]) || !filter(v[i]))
+		if (!check_if_degit_string(v[i]) || !filter(v[i])
+			|| all_string_just_spaces(v[i]))
 			return (0);
 		i++;
 	}

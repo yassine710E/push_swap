@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ychabane <ychabane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/25 14:30:17 by ychabane          #+#    #+#             */
+/*   Updated: 2025/12/25 16:13:50 by ychabane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <limits.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -51,4 +62,5 @@ int					free_list_display_error(int *arr, t_list *list);
 int					indexing(t_list *list, int *arr);
 void				sorting(t_list **list, t_list **list2);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+int					all_string_just_spaces(char *s);
 #endif
